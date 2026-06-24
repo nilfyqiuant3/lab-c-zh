@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 知识库索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1e2b3d;
+            line-height: 1.6;
+        }
+        .hero-dark {
+            background: linear-gradient(145deg, #0b1829 0%, #162b44 100%);
+            color: #eef2f7;
+            padding: 3.2rem 1.5rem 2.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-dark::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #f5f7fa;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+        .hero-dark h1 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .hero-dark .sub {
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 680px;
+            margin: 0 auto 1.2rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .intro-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: -1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 20, 40, 0.06);
+            padding: 1.8rem 1.6rem;
+            flex: 1 1 260px;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #0b1f33;
+            border-left: 4px solid #2a7de1;
+            padding-left: 0.7rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #2d405b;
+            margin-bottom: 0.5rem;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0.4rem;
+        }
+        .card li {
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+            color: #2d405b;
+        }
+        .card li::before {
+            content: "·";
+            color: #2a7de1;
+            font-weight: bold;
+            display: inline-block;
+            width: 1rem;
+        }
+        .info-section {
+            margin: 2.2rem 0 1.8rem;
+        }
+        .info-section h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #0b1f33;
+            border-bottom: 2px solid #dbe2ed;
+            padding-bottom: 0.4rem;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-top: 0.8rem;
+        }
+        .guide-block {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.6rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf4;
+        }
+        .guide-block h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #0b1f33;
+        }
+        .guide-block p {
+            font-size: 0.92rem;
+            color: #2a3b54;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e4e9f1;
+            padding: 0.7rem 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #0b1f33;
+            margin-bottom: 0.2rem;
+        }
+        .faq-a {
+            font-size: 0.9rem;
+            color: #3a4b64;
+            margin-left: 0.4rem;
+        }
+        .notice-box {
+            background: #edf2f9;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            border-left: 5px solid #2a7de1;
+            font-size: 0.92rem;
+            color: #1c2a3f;
+        }
+        .notice-box a {
+            color: #1a6dc1;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .notice-box a:hover {
+            text-decoration: underline;
+        }
+        .link-inline {
+            color: #1a6dc1;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted #99b8e0;
+        }
+        .link-inline:hover {
+            border-bottom: 1px solid #1a6dc1;
+        }
+        .related-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            padding: 0.8rem 0 0.2rem;
+        }
+        .related-tags span {
+            background: #eef3fa;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #1d314a;
+            white-space: nowrap;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            color: #556a81;
+            border-top: 1px solid #dde3ec;
+            margin-top: 1.2rem;
+        }
+        @media (max-width: 720px) {
+            .hero-dark h1 { font-size: 1.7rem; }
+            .grid-2col { grid-template-columns: 1fr; gap: 1.2rem; }
+            .intro-cards { flex-direction: column; }
+            .card { flex: 1 1 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-dark">
+        <h1>爱游戏 · 知识库导航</h1>
+        <p class="sub">从简明指南到访问建议，快速熟悉平台结构与使用要点</p>
+    </div>
+
+    <main class="container">
+
+        <!-- 卡片区：目录感布局 -->
+        <div class="intro-cards">
+            <div class="card">
+                <h3>▎平台定位</h3>
+                <p><a href="https://tvofficial-igame.com" class="link-inline">爱游戏</a> 是综合游戏信息服务站点，涵盖游戏资讯、玩法说明、版本动态与社区参考内容。适合希望系统了解游戏背景与规则的用户。</p>
+            </div>
+            <div class="card">
+                <h3>▎内容结构</h3>
+                <ul>
+                    <li>游戏分类索引 · 类型与标签</li>
+                    <li>版本更新日志 · 历史记录</li>
+                    <li>常见问题 · 操作与设置</li>
+                    <li>社区讨论 · 玩家经验参考</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>▎使用场景</h3>
+                <ul>
+                    <li>查阅某款游戏的基础规则</li>
+                    <li>对比不同版本的差异点</li>
+                    <li>了解活动或限时内容说明</li>
+                    <li>快速定位官方说明或指引</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 简明指南 + FAQ 摘要 -->
+        <div class="info-section">
+            <h2>简明指南与常见问题</h2>
+            <div class="grid-2col">
+                <div class="guide-block">
+                    <h4>🔹 快速引导</h4>
+                    <p>平台首页按游戏类型与热度进行展示。用户可通过顶部导航或搜索栏定位目标内容。每个游戏页面包含概述、系统要求、操作说明及更新历史。建议初次使用时浏览「新手指引」板块，其中汇总了基础术语与界面介绍。</p>
+                    <p>若需了解某个功能的具体意义，可查看对应页面的注释或悬浮提示。</p>
+                </div>
+                <div class="guide-block">
+                    <h4>🔹 FAQ 摘要</h4>
+                    <div class="faq-item">
+                        <div class="faq-q">Q: 如何找到特定游戏的配置要求？</div>
+                        <div class="faq-a">在游戏详情页的「信息」选项卡下，一般会列出最低与推荐配置。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">Q: 版本更新记录在哪里查看？</div>
+                        <div class="faq-a">每个游戏主面板内设有「更新日志」板块，按时间倒序排列。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">Q: 页面显示异常怎么办？</div>
+                        <div class="faq-a">建议先清除浏览器缓存或尝试使用 Chrome、Edge 等现代浏览器。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提示区 -->
+        <div class="notice-box">
+            <strong>📌 访问提醒</strong> · 使用 <a href="https://tvofficial-igame.com">爱游戏</a> 时建议保持网络稳定，部分内容（如视频、社区动态）可能需要加载外部资源。若遇到页面加载缓慢，可尝试刷新或检查网络连接。所有官方信息均以站内页面为准，请留意版本标识。
+        </div>
+
+        <!-- 相关信息区 -->
+        <div class="info-section">
+            <h2>相关信息</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between;">
+                <div style="flex: 1 1 180px;">
+                    <p style="font-size: 0.92rem; color: #2d405b;"><strong>内容更新</strong><br>游戏资料与指引会随版本迭代定期修订，建议定期浏览站内公告了解变动。</p>
+                </div>
+                <div style="flex: 1 1 180px;">
+                    <p style="font-size: 0.92rem; color: #2d405b;"><strong>语言与地区</strong><br>当前站内以中文内容为主，部分游戏名称保留英文原名以便对照。</p>
+                </div>
+                <div style="flex: 1 1 180px;">
+                    <p style="font-size: 0.92rem; color: #2d405b;"><strong>外部链接</strong><br>部分页面会引用官方论坛或合作伙伴网站，跳转前请注意域名。</p>
+                </div>
+            </div>
+            <div class="related-tags">
+                <span>游戏百科</span>
+                <span>操作指南</span>
+                <span>版本差异</span>
+                <span>社区参考</span>
+                <span>常见术语</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>内容仅供参考，具体信息以 <a href="https://tvofficial-igame.com" style="color:#1a6dc1; text-decoration: none;">爱游戏</a> 官方页面为准</p>
+        <p style="margin-top: 0.3rem;">知识库入口 · 索引页</p>
+    </footer>
+
+</body>
+</html>
