@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 资讯与对照助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce7ca 0%, #f5d6b3 40%, #edc9a0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: #3d2e24;
+        }
+
+        .page-wrapper {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* 暖色卡片 · 柔和阴影 */
+        .card {
+            background: #fffcf7;
+            border-radius: 36px 12px 36px 12px;
+            padding: 2.4rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 30px rgba(120, 70, 30, 0.12),
+                        0 4px 8px rgba(180, 120, 70, 0.06);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 16px 36px rgba(110, 65, 25, 0.15);
+        }
+
+        h1, h2, h3 {
+            font-weight: 550;
+            letter-spacing: 0.02em;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #7a4b2a;
+            border-left: 6px solid #d9a87e;
+            padding-left: 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 1.6rem 0 0.8rem 0;
+            color: #764e2c;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::before {
+            content: "◇";
+            font-size: 1.3rem;
+            color: #b8855b;
+        }
+
+        p {
+            margin-bottom: 1.1rem;
+            text-align: justify;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            background: #ecdbca;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            color: #4f3321;
+            margin-bottom: 1rem;
+            font-weight: 450;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 1.6rem;
+            margin: 1.8rem 0;
+        }
+
+        .feature-item {
+            background: #faf1e7;
+            border-radius: 28px 8px 28px 8px;
+            padding: 1.4rem 1.2rem;
+            box-shadow: inset 0 1px 3px rgba(255, 255, 240, 0.8), 0 4px 8px rgba(90, 55, 25, 0.06);
+            transition: transform 0.15s ease;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #6f4427;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-3px);
+        }
+
+        /* 圆角按钮感链接 */
+        a {
+            text-decoration: none;
+            font-weight: 530;
+            transition: all 0.15s ease;
+        }
+
+        a:not(.btn-link) {
+            color: #8f5f3a;
+            border-bottom: 2px dotted #dbb594;
+            padding-bottom: 0.1rem;
+        }
+
+        a:not(.btn-link):hover {
+            color: #b47344;
+            border-bottom-color: #b47344;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: #e6cfb7;
+            color: #4d3221;
+            padding: 0.55rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 530;
+            box-shadow: 0 2px 6px rgba(110, 65, 30, 0.1);
+            border: 1px solid #dbb999;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-link:hover {
+            background: #dbb999;
+            box-shadow: 0 4px 12px rgba(120, 70, 30, 0.18);
+        }
+
+        .scenario-list {
+            list-style: none;
+            margin: 1.2rem 0;
+        }
+
+        .scenario-list li {
+            padding: 0.5rem 0.3rem 0.5rem 2.2rem;
+            position: relative;
+            border-bottom: 1px dashed #eddccd;
+        }
+
+        .scenario-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.6rem;
+            color: #ad7c56;
+            font-weight: bold;
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .faq-item {
+            background: #f7ede2;
+            padding: 1.2rem 1.5rem;
+            border-radius: 24px 8px 24px 8px;
+            margin-top: 1rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-question {
+            font-weight: 570;
+            color: #5f3c24;
+        }
+
+        .tip-box {
+            background: #e7d6c4;
+            padding: 1rem 1.6rem;
+            border-radius: 30px 8px 30px 8px;
+            font-size: 0.95rem;
+            margin: 1.8rem 0;
+            border-left: 5px solid #b8855b;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            text-align: center;
+            color: #6b4f37;
+            font-size: 0.9rem;
+            border-top: 1px solid #dbb999;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .card {
+                padding: 1.6rem 1.2rem;
+                border-radius: 28px 6px 28px 6px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+                padding-left: 0.7rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- hero 卡片：摘要 -->
+        <div class="card">
+            <div class="hero-tagline">📋 日常查询 · 对照 · 延伸阅读</div>
+            <h1>爱游戏 · 资讯对照工具</h1>
+            <p style="font-size:1.05rem;">
+                无论是追踪新作资讯、核对版本细节，还是梳理系列时间线，<a href="https://tvsite-igame.com">爱游戏</a> 提供了一种轻量、结构化的信息组织方式。它不像传统数据库那样冷硬，也不像社区讨论那样凌乱——更像一个经过梳理的参考展板，适合在查询某个作品时连带发现上下文。
+            </p>
+            <p>
+                如果你习惯在阅读评测或观看视频之后，再找一个地方对照一下客观参数、发行顺序或平台信息，那么这个站点可以成为固定的一站。内容覆盖从热门系列到独立作品，并持续补充条目。
+            </p>
+        </div>
+
+        <!-- 亮点卡片（特点） -->
+        <div class="card">
+            <h2>几个值得留意的特点</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>📌 条目对照</strong>
+                    同一作品的不同版本、平台、发行年份并列显示，减少跳转成本。
+                </div>
+                <div class="feature-item">
+                    <strong>🧩 系列脉络</strong>
+                    按系列或开发商组织条目，方便追溯演变脉络，而不只是孤立条目。
+                </div>
+                <div class="feature-item">
+                    <strong>📎 延伸标记</strong>
+                    每条信息附有相关链接或备注，便于进一步核实或阅读背景。
+                </div>
+                <div class="feature-item">
+                    <strong>⚙️ 低噪浏览</strong>
+                    界面直接呈现内容，没有弹窗、自动播放或过度社交元素。
+                </div>
+            </div>
+            <p style="margin-top:0.6rem;">
+                当然，它并不追求覆盖所有作品，而是以实用和可读性为优先。如果你发现某个条目需要更新，也可以通过站点提供的渠道反馈。
+            </p>
+        </div>
+
+        <!-- 使用场景 / 建议 -->
+        <div class="card">
+            <h2>常见的使用场景</h2>
+            <ul class="scenario-list">
+                <li><strong>查证发行时间线</strong> —— 当你在论坛看到“某作品到底哪年首发”的争论时，可以快速对照多个区域版本。</li>
+                <li><strong>补完系列作品</strong> —— 喜欢某个系列但不确定外传、重制版的定位？按系列列表梳理一目了然。</li>
+                <li><strong>撰写资料前的核对</strong> —— 做视频文案或图文评测前，先用条目过一遍基础信息，避免低级错误。</li>
+                <li><strong>延伸探索</strong> —— 从一部作品出发，通过关联条目发现同一开发商的其他作品或同类型遗珠。</li>
+            </ul>
+            <div class="tip-box">
+                💡 <strong>小建议：</strong> 配合浏览器的“在新标签页中打开”功能，把感兴趣的作品条目逐步展开，对比阅读更高效。
+            </div>
+        </div>
+
+        <!-- FAQ 摘选 + 可信说明 -->
+        <div class="card">
+            <h2>一些你可能想问的</h2>
+            <div class="faq-item">
+                <p class="faq-question">❓ 内容来源可靠吗？</p>
+                <p>站点信息整理自公开可查的官方资料、发行商新闻稿及多语言维基，每一条都经过交叉比对。但游戏领域版本繁杂，建议将这里作为参考起点，重要信息最好再核对一手来源。</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-question">❓ 是否需要登录或付费？</p>
+                <p>完全不需要。所有条目和对照信息均可直接浏览，站内无注册、订阅或隐藏内容。你可以保持纯粹的信息查阅状态。</p>
+            </div>
+            <div class="faq-item">
+                <p class="faq-question">❓ 更新频率如何？</p>
+                <p>没有固定周期，但会跟随新作发售、版本变更或社区常见疑问进行增补。如果你发现明显过时或错误的内容，可以联系维护者（站点页面底部有反馈方式）。</p>
+            </div>
+        </div>
+
+        <!-- 克制访问说明 + 链接 -->
+        <div class="card" style="text-align: center; padding: 1.8rem 2rem;">
+            <p style="margin-bottom: 1.2rem;">
+                如果你正在寻找一个清晰、安静的游戏信息参考站，不妨将 <a href="https://tvsite-igame.com" class="btn-link">爱游戏</a> 加入书签。它不会替代深度评测或社区讨论，但在需要快速对照、梳理脉络时，是个顺手且可靠的起点。
+            </p>
+            <p style="color: #6b4b34; font-size: 0.95rem;">
+                日常查询中遇到模糊的发行年份、平台归属或系列顺序，都可以从这里开始整理思路。
+            </p>
+            <div style="margin-top: 1.4rem; letter-spacing: 0.5px; opacity: 0.8;">
+                <span>✦ 信息整理 · 日常对照 · 延伸阅读 ✦</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>内容仅供参考，请以官方渠道为准 · 站点：<a href="https://tvsite-igame.com" style="border-bottom:0; color:#6f4b30;">爱游戏</a></p>
+        </div>
+    </div>
+</body>
+</html>
